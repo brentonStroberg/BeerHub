@@ -16,3 +16,8 @@ BeerHub/obj/BeerHub.csproj.nuget.g.props
 *.txt
 *.txt
 BeerHub/bin/Debug/net5.0/BeerHub.dll
+*.json
+*.props
+*.targets
+*.cache
+*.editorconfig
