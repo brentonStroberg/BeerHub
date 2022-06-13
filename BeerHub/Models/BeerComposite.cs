@@ -71,17 +71,25 @@ namespace BeerHub.Models
       return BeersCollection.Where(x => x.Name == name).First();
     }
 
+    public string GetVotes(string name)
+    {
+      var a = BeersCollection.Where(z => z.Name == name).First();
+      return "Upvotes: " + a.Upvote +", Downvote: "+ a.Downvote;
+    }
+
     public bool CheckForBeer(string name)
     {
-      var a = BeersCollection.Select(x => x).Where(z => z.Name == name);
+      var a = BeersCollection.Where(z => z.Name == name);
       if (a.Count() != 0)
         return true;
       return false;
     }
 
+
+
     public int GetNumOfUpvotes(string name)
     {
-      var beer = BeersCollection.Select(x => x).Where(y => y.Name == name).First();
+      var beer = BeersCollection.Where(y => y.Name == name).First();
       if (beer != null)
       {
         return beer.Upvote;

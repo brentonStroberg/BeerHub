@@ -8,91 +8,14 @@ namespace BeerHub.Interfaces
   public class Alcohol
   {
     #region Privates
-    private string name;
-    private double percentage;
-    private string type;
-    private int id;
-    private int downvote;
-    private int upvote;
+    public string Name { get; set; }
+    public double Percentage { get; set; }
+    public string Type { get; set; }
+    public int ID { get; set; }
+    public int Downvote { get; set; }
+    public int Upvote { get; set; }
     #endregion
 
-    #region Properties
-    public string Name
-    {
-      get { return name; }
-      set
-      {
-        if (name != value)
-        {
-          name = value;
-        }
-      }
-    }
-
-    public double Percentage
-    {
-      get { return percentage; }
-      set
-      {
-        if (percentage != value)
-        {
-          percentage = value;
-        }
-      }
-    }
-
-    public string Type
-    {
-      get { return type; }
-      set
-      {
-        if (type != value)
-        {
-          type = value;
-        }
-      }
-    }
-
-
-
-
-    public int ID
-    {
-      get { return id; }
-      set
-      {
-        if (id != value)
-        {
-          id = value;
-        }
-      }
-    }
-
-    public int Upvote
-    {
-      get { return upvote; }
-      set
-      {
-        if (upvote != value)
-        {
-          upvote = value;
-        }
-      }
-    }
-
-    public int Downvote
-    {
-      get { return downvote; }
-      set
-      {
-        if (downvote != value)
-        {
-          downvote = value;
-        }
-      }
-    }
-
-    #endregion
 
     #region CTOR
     public Alcohol()
@@ -100,20 +23,21 @@ namespace BeerHub.Interfaces
     }
     public Alcohol(string name, string type, double percentage)
     {
-      this.name = name;
-      this.percentage = percentage;
-      this.type = type;
-      this.downvote = 0;
-      this.upvote = 0;
+      this.Name = name;
+      this.Percentage = percentage;
+      this.Type = type;
+      this.ID = -1;
+      this.Downvote = 0;
+      this.Upvote = 0;
     }
     public Alcohol(string name, double percentage, string type, int id, int downvote, int upvote)
     {
-      this.name = name;
-      this.percentage = percentage;
-      this.type = type;
-      this.id = id;
-      this.downvote = downvote;
-      this.upvote = upvote;
+      this.Name = name;
+      this.Percentage = percentage;
+      this.Type = type;
+      this.ID = id;
+      this.Downvote = downvote;
+      this.Upvote = upvote;
     }
     #endregion
 

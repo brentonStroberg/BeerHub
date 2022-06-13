@@ -15,9 +15,7 @@ namespace BeerHub.Controllers
   [Route("api")]
   public class AlcoholController : ControllerBase
   {
-
-
-    AlcoholComposite ac = new AlcoholComposite();
+    static AlcoholComposite ac = new AlcoholComposite();
 
     #region Gets
     [Route("GetBeer/{name}")]
@@ -26,6 +24,29 @@ namespace BeerHub.Controllers
     {
       return ac.GetAlcohol(name);
     }
+
+    [Route("Upvote/{name}")]
+    [HttpGet]
+    public string UpVote(string name)
+    {
+      return ac.UpVote(name);
+    }
+
+    [Route("Downvote/{name}")]
+    [HttpGet]
+    public string Downvote(string name)
+    {
+      return ac.DownVote(name);
+    }
+
+    [Route("GetVotes/{name}")]
+    [HttpGet]
+    public string GetVotes(string name)
+    {
+      return ac.GetVotes(name);
+    }
+
+
 
     #endregion
 

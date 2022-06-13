@@ -99,8 +99,46 @@ namespace BeerHub.Models
       return null;
     }
 
-    #endregion
+    public String UpVote(string name)
+    {
+      foreach (BeerComposite bc in BeerComposites)
+      {
+        if (bc.CheckForBeer(name))
+        {
+          bc.UpVote(name);
+          return "Successful";
+        }
+      }
+      return "Unsuccessful";
+    }
 
+    public String DownVote(string name)
+    {
+      foreach (BeerComposite bc in BeerComposites)
+      {
+        if (bc.CheckForBeer(name))
+        {
+           bc.DownVote(name);
+          return "Successful";
+        }
+      }
+      return "Unsccessful";
+    }
+
+
+    public string GetVotes(string name)
+    {
+      foreach (BeerComposite bc in BeerComposites)
+      {
+        if (bc.CheckForBeer(name))
+        {
+          
+          return bc.GetVotes(name); ;
+        }
+      }
+      return "Unsccessful";
+    }
+    #endregion
 
     #region ForTesting
     public void loadBeer()
