@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Vt7l3gKBle/eIfpD+d0Z5IQBtytSb5VJnnLGH5RJuLrZYaRSn7FO1zM8Cih6R52gLxAJ1PERh8VwFYNTT7GSGQ==",
+  "dgSpecHash": "xmim8inKpxpCgfi5W9XZKt9ovqIYZoFbgeas73YeQbz1V9QW+w7bpnhuk8arvB2pw+EFVScUEYJmFqtRzusMpg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bbdnet2584\\Desktop\\GradStuff\\BeerHub\\BeerHub\\BeerHub.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\bbdnet2584\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.16\\microsoft.aspnetcore.authorization.5.0.16.nupkg.sha512",
+    "C:\\Users\\bbdnet2584\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.16\\microsoft.aspnetcore.metadata.5.0.16.nupkg.sha512",
     "C:\\Users\\bbdnet2584\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\bbdnet2584\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\bbdnet2584\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

@@ -84,3 +84,6 @@ C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\obj\Debug\net5.0\scopedcss
 C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\obj\Debug\net5.0\BeerHub.RazorTargetAssemblyInfo.cache
 C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\obj\Debug\net5.0\BeerHub.csproj.CopyComplete
 C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\obj\Debug\net5.0\BeerHub.genruntimeconfig.cache
+C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\obj\Debug\net5.0\BeerHub.csproj.AssemblyReference.cache
