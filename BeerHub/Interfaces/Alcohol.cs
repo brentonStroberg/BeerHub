@@ -60,7 +60,6 @@ namespace BeerHub.Interfaces
     {
       Downvote = Downvote + 1;
     }
-
     #endregion
   }
 }

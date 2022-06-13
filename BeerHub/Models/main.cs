@@ -1,23 +1,24 @@
 ﻿using BeerHub.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BeerHub.Models
 {
-  public class main
+  public class Main
   {
 
     AlcoholComposite ac = new AlcoholComposite();
 
-    public main()
+    public Main()
     {
 
     }
 
     #region Gets
-    public Alcohol GetBeer(string name)
+    public Alcohol GetAlcohol(string name)
     {
       return ac.GetAlcohol(name);
     }
@@ -36,6 +37,12 @@ namespace BeerHub.Models
     {
       return ac.GetVotes(name);
     }
+
+    public Collection<Alcohol> GetAllAlcohols()
+    {
+      return ac.GetAllAlcohols();
+    }
+
 
     #endregion
   }

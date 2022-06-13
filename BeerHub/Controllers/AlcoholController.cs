@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using BeerHub.Interfaces;
 using BeerHub.Models;
+using System.Collections.ObjectModel;
 
 namespace BeerHub.Controllers
 {
@@ -15,37 +16,43 @@ namespace BeerHub.Controllers
   [Route("api")]
   public class AlcoholController : ControllerBase
   {
-    static AlcoholComposite ac = new AlcoholComposite();
+    static Main main = new Main();
 
     #region Gets
     [Route("GetBeer/{name}")]
     [HttpGet]
     public Alcohol GetBeer(string name)
     {
-      return ac.GetAlcohol(name);
+      return main.GetAlcohol(name);
     }
 
     [Route("Upvote/{name}")]
     [HttpGet]
     public string UpVote(string name)
     {
-      return ac.UpVote(name);
+      return main.UpVote(name);
     }
 
     [Route("Downvote/{name}")]
     [HttpGet]
     public string Downvote(string name)
     {
-      return ac.DownVote(name);
+      return main.Downvote(name);
     }
 
     [Route("GetVotes/{name}")]
     [HttpGet]
     public string GetVotes(string name)
     {
-      return ac.GetVotes(name);
+      return main.GetVotes(name);
     }
 
+    [Route("GetAllAlcohols/")]
+    [HttpGet]
+    public Collection<Alcohol> GetAllAlcohols()
+    {
+      return main.GetAllAlcohols();
+    }
 
 
     #endregion

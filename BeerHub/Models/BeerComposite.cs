@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeerHub.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -65,7 +66,6 @@ namespace BeerHub.Models
         b.DownVote();
       }
     }
-
     public Beer GetAlcohol(string name)
     {
       return BeersCollection.Where(x => x.Name == name).First();
@@ -84,9 +84,6 @@ namespace BeerHub.Models
         return true;
       return false;
     }
-
-
-
     public int GetNumOfUpvotes(string name)
     {
       var beer = BeersCollection.Where(y => y.Name == name).First();
@@ -105,6 +102,11 @@ namespace BeerHub.Models
         return beer.Downvote;
       }
       return -1;
+    }
+
+    public Collection<Beer> GetAllAlcohols()
+    {
+      return BeersCollection;
     }
     #endregion
 

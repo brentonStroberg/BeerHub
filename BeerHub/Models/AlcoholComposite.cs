@@ -138,6 +138,16 @@ namespace BeerHub.Models
       }
       return "Unsccessful";
     }
+
+    public Collection<Alcohol> GetAllAlcohols()
+    {
+      Collection<Alcohol> alcohols = new Collection<Alcohol>();
+      foreach (BeerComposite bc in BeerComposites)
+      {
+        alcohols.Concat(bc.GetAllAlcohols());
+      }
+      return alcohols;
+    }
     #endregion
 
     #region ForTesting
