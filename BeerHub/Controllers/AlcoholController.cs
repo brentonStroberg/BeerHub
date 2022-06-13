@@ -54,6 +54,13 @@ namespace BeerHub.Controllers
       return main.GetAllAlcohols();
     }
 
+    [Route("GetCocktails/{name}")]
+    [HttpGet]
+    public Cocktails GetCocktails(string name)
+    {
+      return main.GetCocktails(name);
+    }
+
 
     #endregion
 
