@@ -14,6 +14,7 @@ namespace BeerHub.Models
     private Collection<BeerComposite> beerComposites;
     private Collection<WineComposite> wineComposites;
     private Collection<WhiskeyComposite> whiskeyComposites;
+    private Collection<VodkaComposite> vodkaComposites;
     #endregion
 
     #region Properties
@@ -25,6 +26,18 @@ namespace BeerHub.Models
         if (beerComposites != value)
         {
           beerComposites = value;
+        }
+      }
+    }
+
+    public Collection<VodkaComposite> VodkaComposites
+    {
+      get { return vodkaComposites; }
+      set
+      {
+        if (vodkaComposites != value)
+        {
+          vodkaComposites = value;
         }
       }
     }
@@ -60,42 +73,52 @@ namespace BeerHub.Models
       BeerComposites = new Collection<BeerComposite>();
       WineComposites = new Collection<WineComposite>();
       WhiskeyComposites = new Collection<WhiskeyComposite>();
-
+      VodkaComposites = new Collection<VodkaComposite>();
       loadBeer();
+      loadVodka();
     }
     #endregion
 
     #region Methods
-    public void AddAlcohol(Alcohol alcohol )
+    public void AddAlcohol(Alcohol alcohol)
     {
-      if(alcohol.GetType() == typeof(Beer))
-      {
-  
-        var b = BeerComposites.Where(x => x.Type == alcohol.Type).FirstOrDefault(); 
-        if( b == null)
-        {
-          BeerComposites.Add(new BeerComposite((Beer)alcohol));
-        }
-        else
-        {
-          b.AddAlcohol((Beer)alcohol);
-        }
-      }else if(alcohol.GetType() == typeof(Wine))
+      if (alcohol.GetType() == typeof(Beer))
       {
 
+        var b = BeerComposites.Where(x => x.Type == alcohol.Type).FirstOrDefault();
+        if (b == null)
+          BeerComposites.Add(new BeerComposite((Beer)alcohol));
+        else
+          b.AddAlcohol((Beer)alcohol);
+      }
+      else if (alcohol.GetType() == typeof(Vodka))
+      {
+        var v = VodkaComposites.Where(x => x.Type == alcohol.Type).FirstOrDefault();
+        if (v == null)
+          VodkaComposites.Add(new VodkaComposite((Vodka)alcohol));
+        else
+          v.AddAlcohol((Vodka)alcohol);
       }
     }
 
     public Alcohol GetAlcohol(string name)
     {
-        foreach( BeerComposite bc in BeerComposites)
+      foreach (BeerComposite bc in BeerComposites)
+      {
+        if (bc.CheckForBeer(name))
         {
-          if (bc.CheckForBeer(name))
-          {
-            return bc.GetAlcohol(name);
-          }
+          return bc.GetAlcohol(name);
         }
-      
+      }
+
+      foreach(VodkaComposite vc in VodkaComposites)
+      {
+        if (vc.CheckForAlcohol(name))
+        {
+          return vc.GetAlcohol(name);
+        }
+      }
+
       return null;
     }
 
@@ -118,7 +141,7 @@ namespace BeerHub.Models
       {
         if (bc.CheckForBeer(name))
         {
-           bc.DownVote(name);
+          bc.DownVote(name);
           return "Successful";
         }
       }
@@ -132,7 +155,7 @@ namespace BeerHub.Models
       {
         if (bc.CheckForBeer(name))
         {
-          
+
           return bc.GetVotes(name); ;
         }
       }
@@ -170,6 +193,25 @@ namespace BeerHub.Models
       tmp.Add(new Beer("Oyster stout", "Stout", 5));
 
       foreach (var temp in tmp)
+      {
+        AddAlcohol(temp);
+      }
+    }
+
+    public void loadVodka()
+    {
+      Collection<Vodka> vod = new Collection<Vodka>();
+      vod.Add(new Vodka("Woody Creek", "Potato", 40));
+      vod.Add(new Vodka("Monopolowa", "Potato", 42));
+      vod.Add(new Vodka("Chase", "Potato", 42));
+      vod.Add(new Vodka("Grey Goose", "Grain", 39));
+      vod.Add(new Vodka("Smirnoff", "Grain", 39));
+      vod.Add(new Vodka("Stolichnaya", "Grain", 39));
+      vod.Add(new Vodka("Absolu tLime", "Fruit", 39));
+      vod.Add(new Vodka("Three Olives Rosé Vodka", "Fruit", 39));
+      vod.Add(new Vodka("Hangar 1 Rosé Vodka", "Fruit", 39));
+
+      foreach (var temp in vod)
       {
         AddAlcohol(temp);
       }

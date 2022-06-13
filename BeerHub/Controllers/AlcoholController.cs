@@ -19,9 +19,9 @@ namespace BeerHub.Controllers
     static Main main = new Main();
 
     #region Gets
-    [Route("GetBeer/{name}")]
+    [Route("GetAlcohol/{name}")]
     [HttpGet]
-    public Alcohol GetBeer(string name)
+    public Alcohol GetAlcohol(string name)
     {
       return main.GetAlcohol(name);
     }
