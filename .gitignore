@@ -21,3 +21,17 @@ BeerHub/bin/Debug/net5.0/BeerHub.dll
 *.targets
 *.cache
 *.editorconfig
+BeerHub/BeerHub.csproj
+*.json
+*.dll
+*.pdb
+*.json
+*.json
+*.props
+*.targets
+*.cache
+*.cache
+*.BuildWithSkipAnalyzers
+BeerHub/obj/Debug/net5.0/BeerHub.csproj.CoreCompileInputs.cache
+BeerHub/obj/Debug/net5.0/BeerHub.csproj.FileListAbsolute.txt
+*.editorconfig

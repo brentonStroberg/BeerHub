@@ -6,13 +6,66 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using BeerHub.Interfaces;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
 
 namespace BeerHub.Controllers
 {
     [Route("api/alcohol")]
     [ApiController]
     public class AlcoholController : ControllerBase
-    {       
+    {
+        //Other method to call dynamoDB
+        //private readonly IDynamoDBContext _dynamoDbContext;
+
+        //public AlcoholController(IDynamoDBContext dynamoDBContext)
+        //{
+        //    _dynamoDbContext = dynamoDBContext;
+        //}
+
+        ////Get specific Alcohol
+        //[HttpGet]
+        //public async Task<IEnumerable<Alcohol>> GetAlcohol(string type)
+        //{
+        //    return await _dynamoDbContext.QueryAsync<Alcohol>(type).GetRemainingAsync();
+        //}
+
+        //Ready for DB integration... maybe
+
+        //private readonly IAmazonDynamoDB dynamoDB;
+        //public AlcoholController(IAmazonDynamoDB dynamoDB)
+        //{
+        //    this.dynamoDB = dynamoDB;
+        //}
+
+        //public async Task<Alcohol[]> GetAlcohols()
+        //{
+        //    //Get all in table
+        //    //Expensive function
+        //    var result = await dynamoDB.ScanAsync(new ScanRequest
+        //    {
+        //        TableName = "alcohol-table"
+        //    });
+
+        //    if(result != null && result != null)
+        //    {
+        //        var alcohols = new List<Alcohol>();
+        //        foreach(var item in result.Items)
+        //        {
+        //            item.TryGetValue("Type", out var type);
+        //            //Other fields
+        //            //Other fields
+
+        //            alcohols.Add(new Alcohol
+        //            {
+        //                Type = type?.S
+        //            });
+        //        }
+        //        return alcohols.ToArray();
+        //    }
+        //    return Array.Empty<Alcohol>();
+        //}
 
         Alcohol[] alcohols = new Alcohol[]
         {
