@@ -75,7 +75,7 @@ namespace BeerHub.Controllers
     #endregion
 
     #region Delete
-    [Route("RemoveAlcohol/{name}")]
+    [Route("Alcohol/{name}")]
     [HttpDelete]
     public bool RemoveAlcohol(string name)
     {
@@ -83,8 +83,15 @@ namespace BeerHub.Controllers
     }
     #endregion
 
-    //#region Post
-    //#endregion
+    #region Post
+    [Route("Save/")]
+    [HttpPost]
+    public void Save()
+    {
+      main.Save();
+    }
+
+    #endregion
 
     //[HttpGet]
     //public IEnumerable<Alcohol> GetAllAlcohols()
