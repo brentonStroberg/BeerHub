@@ -63,5 +63,16 @@ namespace BeerHub.Controllers
 
       return StatusCode(201);
     }
+
+    [Route("UpdateCocktail/{id}")]
+    [HttpPatch]
+    public async Task<ActionResult<IEnumerable<Cocktails>>> UpdateCocktail(int id, Cocktails newCocktail)
+    {
+      Cocktails cocktail = await _db.cocktails.FirstOrDefaultAsync(p => p.CocktailsId == id);
+      cocktail.CocktailIngredients = newCocktail.CocktailIngredients ?? newCocktail.CocktailIngredients;
+
+      cocktail.CocktailName = newCocktail.CocktailName ?? newCocktail.CocktailName;
+      cocktail.Percentage = newCocktail.Percentage; await _db.SaveChangesAsync(); return Ok();
+    }
   }
 }
