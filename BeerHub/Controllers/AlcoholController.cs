@@ -46,7 +46,7 @@ namespace BeerHub.Controllers
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public ActionResult<AlcoholResponse> GetAllAlcohols()
+    public ActionResult<Alcohol> GetAllAlcohols()
     {
       if (main.GetAllAlcohols() == null) return NotFound(); //404
 
