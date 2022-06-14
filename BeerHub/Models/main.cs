@@ -17,7 +17,6 @@ namespace BeerHub.Models
     {
       ac = new AlcoholComposite();
       cc = new CocktailsComposite();
-      loadCocktails();
     }
 
     #region Gets
@@ -53,20 +52,6 @@ namespace BeerHub.Models
 
 
     #endregion
-
-    public void loadCocktails()
-    {
-      Collection<Cocktails> tmp = new Collection<Cocktails>();
-      tmp.Add(new Cocktails("Pisco Punch", new Collection<string> { "pisco", "pineapple", "lemon", "orange", "cloves","Champagne"}, 10.2));
-      tmp.Add(new Cocktails("Sidecar", new Collection<string> { "brandy", "lemon", "riple sec" }, 10.2));
-      tmp.Add(new Cocktails("Blood & Sand", new Collection<string> { "whisky", "sweet vermouth", "cherry liqueur", "orange juice"}, 10.2));
-      tmp.Add(new Cocktails("Irish Coffee", new Collection<string> { "coffee", " Irish whiskey", "cream" }, 10.2));
-
-      foreach (var temp in tmp)
-      {
-        cc.AddCocktails(temp);
-      }
-    }
 
   }
 }

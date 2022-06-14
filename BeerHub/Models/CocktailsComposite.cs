@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeerHub.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace BeerHub.Models
 
     public Cocktails GetCocktails(string name)
     {
-      return CocktailsCollection.Where(x => x.Name == name).FirstOrDefault();
+      return CocktailsCollection.Where(x => x.CocktailName == name).FirstOrDefault();
     }
 
     public Collection<Cocktails> GetAllCocktails()
@@ -55,6 +56,7 @@ namespace BeerHub.Models
     {
       CocktailsCollection = new Collection<Cocktails>();
     }
+
     #endregion
   }
 }

@@ -61,6 +61,7 @@ namespace BeerHub.Controllers
     public Collection<Alcohols> GetAllAlcohols()
     {
       Console.WriteLine(_db.alcohol.Find(1).Type);
+      Console.WriteLine(_db.cocktails.Find(1).CocktailIngredients);
       return main.GetAllAlcohols();
     }
 
