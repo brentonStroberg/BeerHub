@@ -24,30 +24,33 @@ namespace BeerHub.Controllers
     #region Gets
     [Route("GetAlcohol/{name}")]
     [HttpGet]
-    public Alcohols GetAlcohol(string name)
+    public ActionResult GetAlcohol(string name)
     {
-      return main.GetAlcohol(name);
+      return StatusCode(200, main.GetAlcohol(name));
     }
 
     [Route("AddAlcohol/{name}")]
     [HttpPost]
-    public bool AddAlcohol(Alcohols name)
+    public ActionResult AddAlcohol(Alcohols name)
     {
-      return main.AddAlcohol(name);
+      return StatusCode(201, main.AddAlcohol(name));
     }
 
     [Route("GetVotes/{name}")]
     [HttpGet]
-    public string GetVotes(string name)
+    public ActionResult GetVotes(string name)
     {
-      return main.GetVotes(name);
+      if (main.GetVotes(name) == null) return NotFound(); //404
+      return StatusCode(200, main.GetVotes(name));
     }
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public List<Alcohols> GetAllAlcohols()
+    public ActionResult<AlcoholResponse> GetAllAlcohols()
     {
-      return main.GetAllAlcohols();
+      if (main.GetAllAlcohols() == null) return NotFound(); //404
+
+      return StatusCode(200, main.GetAllAlcohols());
     }
     #endregion
 
