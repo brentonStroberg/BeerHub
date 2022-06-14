@@ -44,10 +44,10 @@ namespace BeerHub.Interfaces
     }
     public Alcohols(string name, string type, string specificType, double percentage,  int id, int downvote, int upvote, int calories)
     {
-      this.Name = name;
+      this.Name = name.ToLower();
       this.Percentage = percentage;
-      this.Type = type;
-      this.SpecificType = specificType;
+      this.Type = type.ToLower();
+      this.SpecificType = specificType.ToLower();
       this.ID = id;
       this.Downvote = downvote;
       this.Upvote = upvote;
