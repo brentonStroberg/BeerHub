@@ -14,6 +14,8 @@ namespace BeerHub.Interfaces
     public int ID { get; set; }
     public int Downvote { get; set; }
     public int Upvote { get; set; }
+    public int Calories { get; set; }
+    public string SpecificType { get; set; }
     #endregion
 
 
