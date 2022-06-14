@@ -10,38 +10,62 @@ namespace BeerHub.Models
   public class Main
   {
 
-    AlcoholComposite ac = new AlcoholComposite();
+    AlcoholMainCollection amc;
 
     public Main()
     {
+      amc = new AlcoholMainCollection();
+      loadBeer();
+    }
 
+    public void loadBeer()
+    {
+      Collection<Alcohol> tmp = new Collection<Alcohol>();
+      tmp.Add(new Alcohol("American IPA", "Beer", "India Pale Ales", 4.5));
+      tmp.Add(new Alcohol("EnglishIPA", "Beer", "India Pale Ales", 4.5));
+      tmp.Add(new Alcohol("Imperial IPA", "Beer", "India Pale Ales", 4.5));
+      tmp.Add(new Alcohol("New England American IPA", "Beer", "India Pale Ales", 6));
+      tmp.Add(new Alcohol("West Coast IPA", "Vodka", "India Pale Ales", 5));
+      tmp.Add(new Alcohol("American pilsner", "Beer", "Pilsner", 5));
+      tmp.Add(new Alcohol("Czech pilsner", "Beer", "Pilsner", 5));
+      tmp.Add(new Alcohol("German pilsner", "Beer", "Pilsner", 5));
+      tmp.Add(new Alcohol("American stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohol("American imperial stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohol("Irish dry stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohol("Milk stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohol("Oatmeal stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohol("Oyster stout", "Beer", "Stout", 5));
+      foreach(var t in tmp)
+      {
+        amc.AddAlcohol(t);
+      }
     }
 
     #region Gets
-    public Alcohol GetAlcohol(string name)
+    public bool AddAlcohol(string name)
     {
-      return ac.GetAlcohol(name);
+      return amc.AddAlcohol(new Alcohol("American IPA", "Beer", "India Pale Ales", 4.5));
     }
 
-    public string UpVote(string name)
-    {
-      return ac.UpVote(name);
-    }
+    //public string UpVote(string name)
+    //{
+    //  return ac.UpVote(name);
+    //}
 
-    public string Downvote(string name)
-    {
-      return ac.DownVote(name);
-    }
+    //public string Downvote(string name)
+    //{
+    //  return ac.DownVote(name);
+    //}
 
-    public string GetVotes(string name)
-    {
-      return ac.GetVotes(name);
-    }
+    //public string GetVotes(string name)
+    //{
+    //  return ac.GetVotes(name);
+    //}
 
-    public Collection<Alcohol> GetAllAlcohols()
-    {
-      return ac.GetAllAlcohols();
-    }
+    //public List<List<Alcohol>> GetAllAlcohols()
+    //{
+    //  return ac.GetAllAlcohols();
+    //}
 
 
     #endregion

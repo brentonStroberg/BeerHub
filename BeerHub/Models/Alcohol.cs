@@ -14,14 +14,20 @@ namespace BeerHub.Interfaces
     public int ID { get; set; }
     public int Downvote { get; set; }
     public int Upvote { get; set; }
-    #endregion
 
+    public string SpecificType { get; set; }
+
+    public Alcohol(string specificType)
+    {
+      SpecificType = specificType;
+    }
+    #endregion
 
     #region CTOR
     public Alcohol()
     {
     }
-    public Alcohol(string name, string type, double percentage)
+    public Alcohol(string name, string type, string specificType, double percentage)
     {
       this.Name = name;
       this.Percentage = percentage;
@@ -29,8 +35,9 @@ namespace BeerHub.Interfaces
       this.ID = -1;
       this.Downvote = 0;
       this.Upvote = 0;
+      this.SpecificType = specificType;
     }
-    public Alcohol(string name, double percentage, string type, int id, int downvote, int upvote)
+    public Alcohol(string name, double percentage, string type, string specificType, int id, int downvote, int upvote)
     {
       this.Name = name;
       this.Percentage = percentage;
@@ -38,6 +45,7 @@ namespace BeerHub.Interfaces
       this.ID = id;
       this.Downvote = downvote;
       this.Upvote = upvote;
+      this.SpecificType = specificType;
     }
     #endregion
 
