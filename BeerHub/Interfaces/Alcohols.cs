@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BeerHub.Interfaces
 {
-  public class Alcohol
+  public class Alcohols
   {
     #region Privates
     public string Name { get; set; }
@@ -14,14 +14,26 @@ namespace BeerHub.Interfaces
     public int ID { get; set; }
     public int Downvote { get; set; }
     public int Upvote { get; set; }
+    public int Calories { get; set; }
+    public string SpecificType { get; set; }
     #endregion
 
-
     #region CTOR
-    public Alcohol()
+    public Alcohols()
     {
     }
-    public Alcohol(string name, string type, double percentage)
+
+    public Alcohols(string name, string type, string specificType, double percentage)
+    {
+      this.Name = name;
+      this.Percentage = percentage;
+      this.Type = type;
+      this.ID = -1;
+      this.Downvote = 0;
+      this.Upvote = 0;
+      this.SpecificType = specificType;
+    }
+    public Alcohols(string name, string type, double percentage)
     {
       this.Name = name;
       this.Percentage = percentage;
@@ -30,15 +42,19 @@ namespace BeerHub.Interfaces
       this.Downvote = 0;
       this.Upvote = 0;
     }
-    public Alcohol(string name, double percentage, string type, int id, int downvote, int upvote)
+    public Alcohols(string name, string type, string specificType, double percentage,  int id, int downvote, int upvote, int calories)
     {
       this.Name = name;
       this.Percentage = percentage;
       this.Type = type;
+      this.SpecificType = specificType;
       this.ID = id;
       this.Downvote = downvote;
       this.Upvote = upvote;
+      this.Calories = calories;
     }
+
+
     #endregion
 
     #region Methods

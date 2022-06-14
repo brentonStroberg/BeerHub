@@ -10,6 +10,8 @@ using BeerHub.Models;
 using System.Collections.ObjectModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using BeerHub.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace BeerHub.Controllers
 {
@@ -18,45 +20,74 @@ namespace BeerHub.Controllers
   [Route("api")]
   public class AlcoholController : ControllerBase
   {
+
     static Main main = new Main();
 
     #region Gets
-    [Route("GetBeer/{name}")]
+    [Route("GetAlcohol/{name}")]
     [HttpGet]
-    public Alcohol GetBeer(string name)
+    public ActionResult GetAlcohol(string name)
     {
-      return main.GetAlcohol(name);
+      return StatusCode(200, main.GetAlcohol(name));
     }
 
+    [Route("AddAlcohol/{name}")]
+    [HttpPost]
+    public ActionResult AddAlcohol(Alcohols name)
+    {
+      return StatusCode(201, main.AddAlcohol(name));
+    }
+
+    [Route("GetVotes/{name}")]
+    [HttpGet]
+    public ActionResult GetVotes(string name)
+    {
+      if (main.GetVotes(name) == null) return NotFound(); //404
+      return StatusCode(200, main.GetVotes(name));
+    }
+
+    [Route("GetAllAlcohols/")]
+    [HttpGet]
+    public ActionResult<AlcoholResponse> GetAllAlcohols()
+    {
+      if (main.GetAllAlcohols() == null) return NotFound(); //404
+
+      return StatusCode(200, main.GetAllAlcohols());
+    }
+    #endregion
+
+    #region Puts
     [Route("Upvote/{name}")]
     [HttpGet]
-    public string UpVote(string name)
+    public bool UpVote(string name)
     {
       return main.UpVote(name);
     }
 
     [Route("Downvote/{name}")]
     [HttpGet]
-    public string Downvote(string name)
+    public bool Downvote(string name)
     {
       return main.Downvote(name);
     }
+    #endregion
 
-    [Route("GetVotes/{name}")]
-    [HttpGet]
-    public string GetVotes(string name)
+    #region Delete
+    [Route("Alcohol/{name}")]
+    [HttpDelete]
+    public bool RemoveAlcohol(string name)
     {
-      return main.GetVotes(name);
+      return main.RemoveAlcohol(name);
     }
+    #endregion
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public Collection<Alcohol> GetAllAlcohols()
+    public Collection<Alcohol> GetAllAlcohols()
     {
-      return main.GetAllAlcohols();
+      main.Save();
     }
-
 
     #endregion
 
@@ -103,5 +134,55 @@ namespace BeerHub.Controllers
 
     //    return Ok(alcohol);
     //}
+
+
+
+
+
+
+    //[HttpGet]
+    //public IEnumerable<Alcohol> GetAllAlcohols()
+    //{
+    //    return alcohols;
+    //}
+
+    //[Route("api/alcohol/{id}")]
+    //[HttpGet]
+    //public IActionResult GetAlcohol(int id)
+    //{
+    //    var alcohol = alcohols.FirstOrDefault((p) => p.ID == id);
+    //    if(alcohol == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    return Ok(alcohol);
+    //}
+
+    //[Route("api/new-alchohol")]
+    //[HttpPost]
+    //public IActionResult NewAlcohol(Alcohol newAlcohol)
+    //{
+    //    if (!ModelState.IsValid)
+    //    {
+    //        return BadRequest("Invalid Data");
+    //    }
+    //    alcohols.Prepend(newAlcohol);
+    //    return Ok(alcohols.Append(newAlcohol));
+    //}
+
+    //[Route("api/alcohol/new-ingredients")]
+    //[HttpPost]
+    //public IActionResult NewIngredients(int id, List<string> newIngredients)
+    //{
+    //    var alcohol = alcohols.FirstOrDefault((p) => p.ID == id);
+    //    if (alcohol == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    alcohol.Ingredients = new List<string>(newIngredients);
+
+    //    return Ok(alcohol);
+    //}
+
   }
 }
