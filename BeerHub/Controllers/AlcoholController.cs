@@ -26,20 +26,6 @@ namespace BeerHub.Controllers
       return main.GetAlcohol(name);
     }
 
-    [Route("Upvote/{name}")]
-    [HttpGet]
-    public string UpVote(string name)
-    {
-      return main.UpVote(name);
-    }
-
-    [Route("Downvote/{name}")]
-    [HttpGet]
-    public string Downvote(string name)
-    {
-      return main.Downvote(name);
-    }
-
     [Route("GetVotes/{name}")]
     [HttpGet]
     public string GetVotes(string name)
@@ -55,6 +41,29 @@ namespace BeerHub.Controllers
     }
 
 
+    #endregion
+
+    #region Puts
+    [Route("Upvote/{name}")]
+    [HttpGet]
+    public string UpVote(string name)
+    {
+      return main.UpVote(name);
+    }
+
+    [Route("Downvote/{name}")]
+    [HttpGet]
+    public string Downvote(string name)
+    {
+      return main.Downvote(name);
+    }
+    #endregion
+
+    #region Delete
+
+    #endregion
+
+    #region Post
     #endregion
 
     //[HttpGet]
