@@ -84,12 +84,10 @@ namespace BeerHub.Controllers
     [Route("GetAllAlcohols/")]
     [HttpGet]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public Collection<Alcohol> GetAllAlcohols()
+    public void Save()
     {
       main.Save();
     }
-
-    #endregion
 
     //[HttpGet]
     //public IEnumerable<Alcohol> GetAllAlcohols()
