@@ -14,6 +14,6 @@ namespace BeerHub.Database
     }
 
     public DbSet<Alcohol> alcohol { get; set; }
-    public DbSet<Cocktails> cocktails { get; set; }
+    //public DbSet<Cocktails> cocktails { get; set; }
   }
 }
