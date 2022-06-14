@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeerHub.Models
 {
-  public class Vodka : Alcohol
+  public class Vodka : Alcohols
   {
     public Vodka()
     {

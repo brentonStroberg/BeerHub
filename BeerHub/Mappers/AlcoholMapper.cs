@@ -10,9 +10,9 @@ namespace BeerHub.Mappers
 
         }
 
-        public Alcohol AlcoholDTOToAlcohol(AlcoholDTO alcoholDTO)
+        public Alcohols AlcoholDTOToAlcohol(Alcohol alcoholDTO)
         {
-            Alcohol a = new Alcohol();
+            Alcohols a = new Alcohols();
             a.ID = alcoholDTO.AlcoholId;
             a.Name = alcoholDTO.Name;
             a.Type = alcoholDTO.Type;
@@ -24,9 +24,9 @@ namespace BeerHub.Mappers
             return a;
         }
 
-        public AlcoholDTO AlcoholToAlcoholDTO(Alcohol alcohol)
+        public Alcohol AlcoholToAlcoholDTO(Alcohols alcohol)
         {
-            AlcoholDTO a = new AlcoholDTO();
+            Alcohol a = new Alcohol();
             a.AlcoholId = alcohol.ID;
             a.Name = alcohol.Name;
             a.Type = alcohol.Type;

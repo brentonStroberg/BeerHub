@@ -80,7 +80,7 @@ namespace BeerHub.Models
     #endregion
 
     #region Methods
-    public void AddAlcohol(Alcohol alcohol)
+    public void AddAlcohol(Alcohols alcohol)
     {
       if (alcohol.GetType() == typeof(Beer))
       {
@@ -101,7 +101,7 @@ namespace BeerHub.Models
       }
     }
 
-    public Alcohol GetAlcohol(string name)
+    public Alcohols GetAlcohol(string name)
     {
       foreach (BeerComposite bc in BeerComposites)
       {
@@ -162,9 +162,9 @@ namespace BeerHub.Models
       return "Unsccessful";
     }
 
-    public Collection<Alcohol> GetAllAlcohols()
+    public Collection<Alcohols> GetAllAlcohols()
     {
-      Collection<Alcohol> alcohols = new Collection<Alcohol>();
+      Collection<Alcohols> alcohols = new Collection<Alcohols>();
       foreach (BeerComposite bc in BeerComposites)
       {
         alcohols.Concat(bc.GetAllAlcohols());

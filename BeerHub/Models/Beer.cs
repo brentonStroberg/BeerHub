@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeerHub.Models
 {
-  public class Beer : Alcohol
+  public class Beer : Alcohols
   {
 
     private int bottleSize;

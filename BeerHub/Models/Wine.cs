@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeerHub.Models
 {
-  public class Wine:Alcohol
+  public class Wine:Alcohols
   {
   }
 }
