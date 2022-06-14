@@ -22,6 +22,16 @@ namespace BeerHub.Models
       map = new AlcoholMapper();
       amc = new AlcoholMainCollection();
       loadAlcohol();
+      AutoSaveAsync();
+    }
+
+    private async Task AutoSaveAsync()
+    {
+      while (true)
+      {
+        await Task.Delay(TimeSpan.FromMinutes(2));
+        Save();
+      }
     }
 
     #region Gets
