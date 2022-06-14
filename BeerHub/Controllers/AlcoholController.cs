@@ -24,14 +24,14 @@ namespace BeerHub.Controllers
     static Main main = new Main();
 
     #region Gets
-    [Route("GetAlcohol/{name}")]
+    [Route("Alcohol/{name}")]
     [HttpGet]
     public ActionResult GetAlcohol(string name)
     {
       return StatusCode(200, main.GetAlcohol(name));
     }
 
-    [Route("AddAlcohol/{name}")]
+    [Route("Alcohol/{name}")]
     [HttpPost]
     public ActionResult AddAlcohol(Alcohols name)
     {
