@@ -15,64 +15,88 @@ namespace BeerHub.Controllers
   public class CocktailController : ControllerBase
   {
     private readonly DBManager _db;
-
+    
     public CocktailController(DBManager db)
     {
       _db = db;
     }
 
-    [Route("GetCocktails/{name}")]
-    [HttpGet]
-    public Cocktails GetCocktailsbyAlcohol(string name)
-    {
-      for (int j = 1; j <= _db.cocktails.Count(); j++)
-      {
-        string cocktailByAlc = _db.cocktails.Find(j).CocktailIngredients;
-        string[] words = cocktailByAlc.Split(",");
-        for (int i = 0; i < words.Length; i++)
-        {
-          if (name == words[i])
-          {
-            Cocktails cocktails = new Cocktails
-            {
-              CocktailName = _db.cocktails.Find(j).CocktailName,
-              CocktailIngredients = _db.cocktails.Find(j).CocktailIngredients,
-              Percentage = _db.cocktails.Find(j).Percentage
-            };
-            return cocktails;
-          }
-        }
-      }
-      return null;
-    }
-
-    [Route("GetAllCocktails/")]
+    [Route("GetAllCocktails")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Cocktails>>> GetAllCocktails()
     {
-      return await _db.cocktails.ToListAsync();
+        return await _db.cocktails.ToListAsync();
     }
 
-    [HttpDelete("{cocktailId}")]
-    public async Task<ActionResult> DeleteProduct(int cocktailId)
+    [Route("GetCocktailsByAlcohol/{alcohol}")]
+    [HttpGet]
+    public List<Cocktails> GetCocktailsbyAlcohol(string alcohol)
     {
-      Cocktails cocktail = await _db.cocktails.FirstOrDefaultAsync(p => p.CocktailsId == cocktailId);
-      _db.cocktails.Remove(cocktail);
-
-      await _db.SaveChangesAsync();
-
-      return StatusCode(201);
+        var cocktailList = new List<Cocktails>();
+        for (int j = 1; j <= _db.cocktails.Count(); j++)
+        {
+            string cocktailByAlc = _db.cocktails.Find(j).CocktailIngredients;
+            string[] words = cocktailByAlc.Split(",", StringSplitOptions.TrimEntries);
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (alcohol.ToLower() == words[i].ToLower())
+                {
+                    Cocktails cocktails = new Cocktails
+                    {
+                        CocktailName = _db.cocktails.Find(j).CocktailName,
+                        CocktailIngredients = _db.cocktails.Find(j).CocktailIngredients,
+                        Percentage = _db.cocktails.Find(j).Percentage
+                    };
+                    cocktailList.Add(cocktails);
+                }
+            }
+        }
+        return cocktailList;
     }
 
-    [Route("UpdateCocktail/{id}")]
+        [Route("UpdateCocktail/{id}")]
     [HttpPatch]
     public async Task<ActionResult<IEnumerable<Cocktails>>> UpdateCocktail(int id, Cocktails newCocktail)
     {
-      Cocktails cocktail = await _db.cocktails.FirstOrDefaultAsync(p => p.CocktailsId == id);
-      cocktail.CocktailIngredients = newCocktail.CocktailIngredients ?? newCocktail.CocktailIngredients;
+        Cocktails cocktail = await _db.cocktails.FirstOrDefaultAsync(p => p.CocktailsId == id);
 
-      cocktail.CocktailName = newCocktail.CocktailName ?? newCocktail.CocktailName;
-      cocktail.Percentage = newCocktail.Percentage; await _db.SaveChangesAsync(); return Ok();
+        if (cocktail == null)
+        {
+            return NotFound();
+        }
+        cocktail.CocktailIngredients = newCocktail.CocktailIngredients ?? newCocktail.CocktailIngredients;
+        cocktail.CocktailName = newCocktail.CocktailName ?? newCocktail.CocktailName;
+        cocktail.Percentage = newCocktail.Percentage; 
+        await _db.SaveChangesAsync(); 
+        return Ok();
     }
-  }
+
+    [Route("NewCocktail")]
+    [HttpPost]
+    public async Task<ActionResult<Cocktails>> NewCocktail(Cocktails newCocktail)
+    {
+        
+        _db.cocktails.Add(newCocktail);
+        await _db.SaveChangesAsync();
+        return Ok();
+    }
+
+    [Route("DeleteCocktail/{cocktailId}")]
+    [HttpDelete]
+    public async Task<ActionResult> DeleteProduct(int cocktailId)
+    {
+        Cocktails cocktail = await _db.cocktails.FirstOrDefaultAsync(p => p.CocktailsId == cocktailId);
+
+        if(cocktail == null)
+        {
+            return NotFound();
+        }
+
+        _db.cocktails.Remove(cocktail);
+
+        await _db.SaveChangesAsync();
+
+        return StatusCode(201);
+    }
+    }
 }
