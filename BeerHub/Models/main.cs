@@ -27,12 +27,12 @@ namespace BeerHub.Models
     #region Gets
     public Alcohols GetAlcohol(string name)
     {
-      return amc.GetAlcohol(name);
+      return amc.GetAlcohol(name.ToLower());
     }
 
     public bool UpVote(string name)
     {
-      return amc.UpVote(name);
+      return amc.UpVote(name.ToLower());
     }
 
     public List<Alcohols> GetAllAlcohols()
@@ -45,10 +45,10 @@ namespace BeerHub.Models
 
     public bool RemoveAlcohol(string name)
     {
-      bool temp = amc.RemoveAlcohol(name);
+      bool temp = amc.RemoveAlcohol(name.ToLower());
       if (temp)
       {
-        RemoveAlcohols(name);
+        RemoveAlcohols(name.ToLower());
       }
       return temp;
     }
@@ -70,12 +70,12 @@ namespace BeerHub.Models
     #region Puts
     public bool Downvote(string name)
     {
-      return amc.DownVote(name);
+      return amc.DownVote(name.ToLower());
     }
 
     public string GetVotes(string name)
     {
-      return amc.GetVotes(name);
+      return amc.GetVotes(name.ToLower());
     }
     #endregion
 
@@ -143,7 +143,7 @@ namespace BeerHub.Models
       using (SqlConnection connection = new SqlConnection(connectionString))
       {
         SqlCommand command = new SqlCommand(queryString, connection);
-        command.Parameters.AddWithValue("@tPatSName", name);
+        command.Parameters.AddWithValue("@tPatSName", name.ToLower());
         connection.Open();
         SqlDataReader reader = command.ExecuteReader();
         try
