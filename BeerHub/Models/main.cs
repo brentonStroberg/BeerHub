@@ -10,48 +10,62 @@ namespace BeerHub.Models
   public class Main
   {
 
-    private static AlcoholComposite ac;
-    private static CocktailsComposite cc;
+    private AlcoholMainCollection amc;
+    private CocktailsComposite cc;
 
     public Main()
     {
-      ac = new AlcoholComposite();
+      amc = new AlcoholMainCollection();
       cc = new CocktailsComposite();
       loadCocktails();
+      loadBeer();
     }
 
     #region Gets
     public Alcohols GetAlcohol(string name)
     {
-      return ac.GetAlcohol(name);
+      return amc.GetAlcohol(name);
     }
 
-    public string UpVote(string name)
+    public bool UpVote(string name)
     {
-      return ac.UpVote(name);
+      return amc.UpVote(name);
     }
 
-    public string Downvote(string name)
+    public List<Alcohols> GetAllAlcohols()
     {
-      return ac.DownVote(name);
-    }
-
-    public string GetVotes(string name)
-    {
-      return ac.GetVotes(name);
-    }
-
-    public Collection<Alcohols> GetAllAlcohols()
-    {
-      return ac.GetAllAlcohols();
+      return amc.GetAllAlcohols();
     }
 
     public Cocktails GetCocktails(string name)
     {
       return cc.GetCocktails(name);
     }
+    #endregion
 
+    #region Post
 
+    public bool RemoveAlcohol(string name)
+    {
+      return amc.RemoveAlcohol(name);
+    }
+
+    public bool AddAlcohol(Alcohols alcohol)
+    {
+      return amc.AddAlcohol(alcohol);
+    }
+    #endregion
+
+    #region Puts
+    public bool Downvote(string name)
+    {
+      return amc.DownVote(name);
+    }
+
+    public string GetVotes(string name)
+    {
+      return amc.GetVotes(name);
+    }
     #endregion
 
     public void loadCocktails()
@@ -65,6 +79,29 @@ namespace BeerHub.Models
       foreach (var temp in tmp)
       {
         cc.AddCocktails(temp);
+      }
+    }
+
+    public void loadBeer()
+    {
+      Collection<Alcohols> tmp = new Collection<Alcohols>();
+      tmp.Add(new Alcohols("American IPA", "Beer", "India Pale Ales", 4.5));
+      tmp.Add(new Alcohols("EnglishIPA", "Beer", "India Pale Ales", 4.5));
+      tmp.Add(new Alcohols("Imperial IPA", "Beer", "India Pale Ales", 4.5));
+      tmp.Add(new Alcohols("New England American IPA", "Beer", "India Pale Ales", 6));
+      tmp.Add(new Alcohols("West Coast IPA", "Vodka", "India Pale Ales", 5));
+      tmp.Add(new Alcohols("American pilsner", "Beer", "Pilsner", 5));
+      tmp.Add(new Alcohols("Czech pilsner", "Beer", "Pilsner", 5));
+      tmp.Add(new Alcohols("German pilsner", "Beer", "Pilsner", 5));
+      tmp.Add(new Alcohols("American stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohols("American imperial stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohols("Irish dry stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohols("Milk stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohols("Oatmeal stout", "Beer", "Stout", 5));
+      tmp.Add(new Alcohols("Oyster stout", "Beer", "Stout", 5));
+      foreach (var t in tmp)
+      {
+        amc.AddAlcohol(t);
       }
     }
 

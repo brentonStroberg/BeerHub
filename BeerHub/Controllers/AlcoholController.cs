@@ -35,18 +35,19 @@ namespace BeerHub.Controllers
       return main.GetAlcohol(name);
     }
 
-    [Route("Upvote/{name}")]
-    [HttpGet]
-    public string UpVote(string name)
+
+    [Route("RemoveAlcohol/{name}")]
+    [HttpDelete]
+    public bool RemoveAlcohol(string name)
     {
-      return main.UpVote(name);
+      return main.RemoveAlcohol(name);
     }
 
-    [Route("Downvote/{name}")]
-    [HttpGet]
-    public string Downvote(string name)
+    [Route("AddAlcohol/{name}")]
+    [HttpPost]
+    public bool AddAlcohol(Alcohols name)
     {
-      return main.Downvote(name);
+      return main.AddAlcohol(name);
     }
 
     [Route("GetVotes/{name}")]
@@ -58,9 +59,8 @@ namespace BeerHub.Controllers
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public Collection<Alcohols> GetAllAlcohols()
+    public List<Alcohols> GetAllAlcohols()
     {
-      Console.WriteLine(_db.alcohol.Find(1).Type);
       return main.GetAllAlcohols();
     }
 
@@ -70,9 +70,79 @@ namespace BeerHub.Controllers
     {
       return main.GetCocktails(name);
     }
+    #endregion
 
+    #region Puts
+    [Route("Upvote/{name}")]
+    [HttpGet]
+    public bool UpVote(string name)
+    {
+      return main.UpVote(name);
+    }
+
+    [Route("Downvote/{name}")]
+    [HttpGet]
+    public bool Downvote(string name)
+    {
+      return main.Downvote(name);
+    }
+    #endregion
+
+    #region Delete
 
     #endregion
+
+    #region Post
+    #endregion
+
+    //[HttpGet]
+    //public IEnumerable<Alcohol> GetAllAlcohols()
+    //{
+    //    return alcohols;
+    //}
+
+    //[Route("api/alcohol/{id}")]
+    //[HttpGet]
+    //public IActionResult GetAlcohol(int id)
+    //{
+    //    var alcohol = alcohols.FirstOrDefault((p) => p.ID == id);
+    //    if(alcohol == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    return Ok(alcohol);
+    //}
+
+    //[Route("api/new-alchohol")]
+    //[HttpPost]
+    //public IActionResult NewAlcohol(Alcohol newAlcohol)
+    //{
+    //    if (!ModelState.IsValid)
+    //    {
+    //        return BadRequest("Invalid Data");
+    //    }
+    //    alcohols.Prepend(newAlcohol);
+    //    return Ok(alcohols.Append(newAlcohol));
+    //}
+
+    //[Route("api/alcohol/new-ingredients")]
+    //[HttpPost]
+    //public IActionResult NewIngredients(int id, List<string> newIngredients)
+    //{
+    //    var alcohol = alcohols.FirstOrDefault((p) => p.ID == id);
+    //    if (alcohol == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    alcohol.Ingredients = new List<string>(newIngredients);
+
+    //    return Ok(alcohol);
+    //}
+
+
+
+
+    
 
     //[HttpGet]
     //public IEnumerable<Alcohol> GetAllAlcohols()
