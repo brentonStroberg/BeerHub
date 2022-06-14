@@ -47,26 +47,30 @@ namespace BeerHub.Models
       return amc.AddAlcohol(new Alcohol("American IPA", "Beer", "India Pale Ales", 4.5));
     }
 
-    //public string UpVote(string name)
-    //{
-    //  return ac.UpVote(name);
-    //}
+    public Alcohol GetAlcohol(string name)
+    {
+      return null;
+    }
 
-    //public string Downvote(string name)
-    //{
-    //  return ac.DownVote(name);
-    //}
+    public bool UpVote(string name)
+    {
+      return amc.UpVote(name);
+    }
 
-    //public string GetVotes(string name)
-    //{
-    //  return ac.GetVotes(name);
-    //}
+    public bool Downvote(string name)
+    {
+      return amc.DownVote(name);
+    }
 
-    //public List<List<Alcohol>> GetAllAlcohols()
-    //{
-    //  return ac.GetAllAlcohols();
-    //}
+    public string GetVotes(string name)
+    {
+      return amc.GetVotes(name);
+    }
 
+    public List<List<Alcohol>> GetAllAlcohols()
+    {
+      return amc.GetAllAlcohols();
+    }
 
     #endregion
   }

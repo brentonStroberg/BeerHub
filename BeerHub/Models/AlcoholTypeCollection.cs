@@ -49,9 +49,44 @@ namespace BeerHub.Models
           return at.AddAlcohol(alcohol);
         }
       }
-
       AlcoholTypes.Add(new AlcoholType(alcohol));
       return true;
+    }
+
+    public string GetVote(string name)
+    {
+      foreach (var at in AlcoholTypes)
+      {
+        if (at.FindName(name) == true)
+        {
+          return at.GetVote(name);
+        }
+      }
+      return "";
+    }
+
+    public bool UpVote(string name)
+    {
+      foreach (var at in AlcoholTypes)
+      {
+        if (at.FindName(name) == true)
+        {
+          return at.UpVote(name);
+        }
+      }
+      return false;
+    }
+
+    public bool FindName(string name)
+    {
+      foreach(var at in AlcoholTypes)
+      {
+        if (at.FindName(name) == true)
+        {
+          return true;
+        }
+      }
+      return false;
     }
     #endregion
 

@@ -11,10 +11,9 @@ namespace BeerHub.Models
   {
 
     #region Privates
-    Collection<Alcohol> alcohols;
+    Collection<Booze> alcohols;
     private string type;
     #endregion
-
 
     #region Properties
     public string Type
@@ -29,7 +28,7 @@ namespace BeerHub.Models
       }
     }
 
-    public Collection<Alcohol> Alcohols
+    public Collection<Booze> Alcohols
     {
       get { return alcohols; }
       set
@@ -43,22 +42,49 @@ namespace BeerHub.Models
     #endregion
 
     #region Methods
-    public bool AddAlcohol(Alcohol alcohol)
+    public bool AddAlcohol(Booze alcohol)
     {
-      if(alcohol.SpecificType == Type)
+      if (alcohol.SpecificType == Type)
       {
         Alcohols.Add(alcohol);
         return true;
       }
       return false;
     }
+
+    public bool FindName(string name)
+    {
+      foreach( var alc in Alcohols)
+      {
+        if (alc.Name == name)
+        {
+          return true;
+        }
+      }
+      return false;
+    }
+
+
+
+    public bool UpVote(string name)
+    {
+      foreach (var alc in Alcohols)
+      {
+        if (alc.Name == name)
+        {
+          alc.UpVote();
+          return true;
+        }
+      }
+      return false;
+    }
     #endregion
 
     #region CTOR
-    public AlcoholType(Alcohol alcohol)
+    public AlcoholType(Booze alcohol)
     {
       Type = alcohol.SpecificType;
-      alcohols = new Collection<Alcohol>();
+      alcohols = new Collection<Booze>();
       alcohols.Add(alcohol);
     }
     #endregion

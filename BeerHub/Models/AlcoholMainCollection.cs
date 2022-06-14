@@ -37,6 +37,40 @@ namespace BeerHub.Models
       return true;
     }
 
+    public bool UpVote(string name)
+    {
+      foreach (var atc in AlcoholTypeCollection)
+      {
+        if (atc.FindName(name) == true)
+        {
+          return atc.UpVote(name);
+        }
+      }
+      return false;
+    }
+
+    public bool DownVote(string name)
+    {
+      return false;
+    }
+
+    public string GetVotes(string name)
+    {
+      foreach (var atc in AlcoholTypeCollection)
+      {
+        if (atc.FindName(name) == true)
+        {
+          return atc.GetVotes(name);
+        }
+      }
+      return false;
+    }
+
+    public List<List<Alcohol>> GetAllAlcohols()
+    {
+      return null;
+    }
+
     public AlcoholMainCollection()
     {
       AlcoholTypeCollection = new Collection<AlcoholTypeCollection>();

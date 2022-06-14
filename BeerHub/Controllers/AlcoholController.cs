@@ -21,42 +21,49 @@ namespace BeerHub.Controllers
     #region Gets
     [Route("GetAlcohol/{name}")]
     [HttpGet]
-    public bool GetAlcohol(string name)
+    public Alcohol GetAlcohol(string name)
+    {
+      return main.GetAlcohol(name);
+    }
+
+    [Route("AddAlcohol/{name}")]
+    [HttpGet]
+    public bool AddAlcohol(string name)
     {
       return main.AddAlcohol(name);
     }
 
-    //[Route("GetVotes/{name}")]
-    //[HttpGet]
-    //public string GetVotes(string name)
-    //{
-    //  return main.GetVotes(name);
-    //}
+    [Route("GetVotes/{name}")]
+    [HttpGet]
+    public string GetVotes(string name)
+    {
+      return main.GetVotes(name);
+    }
 
-    //[Route("GetAllAlcohols/")]
-    //[HttpGet]
-    //public List<List<Alcohol>> GetAllAlcohols()
-    //{
-    //  return main.GetAllAlcohols();
-    //}
+    [Route("GetAllAlcohols/")]
+    [HttpGet]
+    public List<List<Alcohol>> GetAllAlcohols()
+    {
+      return main.GetAllAlcohols();
+    }
 
 
     #endregion
 
     #region Puts
-    //[Route("Upvote/{name}")]
-    //[HttpGet]
-    //public string UpVote(string name)
-    //{
-    //  return main.UpVote(name);
-    //}
+    [Route("Upvote/{name}")]
+    [HttpGet]
+    public bool UpVote(string name)
+    {
+      return main.UpVote(name);
+    }
 
-    //[Route("Downvote/{name}")]
-    //[HttpGet]
-    //public string Downvote(string name)
-    //{
-    //  return main.Downvote(name);
-    //}
+    [Route("Downvote/{name}")]
+    [HttpGet]
+    public bool Downvote(string name)
+    {
+      return main.Downvote(name);
+    }
     #endregion
 
     #region Delete
