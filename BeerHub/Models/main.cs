@@ -11,12 +11,10 @@ namespace BeerHub.Models
   {
 
     private static AlcoholComposite ac;
-    private static CocktailsComposite cc;
 
     public Main()
     {
       ac = new AlcoholComposite();
-      cc = new CocktailsComposite();
     }
 
     #region Gets
@@ -44,13 +42,6 @@ namespace BeerHub.Models
     {
       return ac.GetAllAlcohols();
     }
-
-    public Cocktails GetCocktails(string name)
-    {
-      return cc.GetCocktails(name);
-    }
-
-
     #endregion
 
   }
