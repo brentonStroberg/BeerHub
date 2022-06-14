@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bbdnet2650\\Desktop\\BeerHub\\BeerHub\\BeerHub\\BeerHub.csproj": {}
+    "C:\\Users\\bbdnet2584\\Desktop\\GradStuff\\BeerHub\\BeerHub\\BeerHub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bbdnet2650\\Desktop\\BeerHub\\BeerHub\\BeerHub\\BeerHub.csproj": {
+    "C:\\Users\\bbdnet2584\\Desktop\\GradStuff\\BeerHub\\BeerHub\\BeerHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bbdnet2650\\Desktop\\BeerHub\\BeerHub\\BeerHub\\BeerHub.csproj",
+        "projectUniqueName": "C:\\Users\\bbdnet2584\\Desktop\\GradStuff\\BeerHub\\BeerHub\\BeerHub.csproj",
         "projectName": "BeerHub",
-        "projectPath": "C:\\Users\\bbdnet2650\\Desktop\\BeerHub\\BeerHub\\BeerHub\\BeerHub.csproj",
-        "packagesPath": "C:\\Users\\bbdnet2650\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bbdnet2650\\Desktop\\BeerHub\\BeerHub\\BeerHub\\obj\\",
+        "projectPath": "C:\\Users\\bbdnet2584\\Desktop\\GradStuff\\BeerHub\\BeerHub\\BeerHub.csproj",
+        "packagesPath": "C:\\Users\\bbdnet2584\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bbdnet2584\\Desktop\\GradStuff\\BeerHub\\BeerHub\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bbdnet2650\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bbdnet2584\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,12 +71,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.17, 5.0.17]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -81,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
