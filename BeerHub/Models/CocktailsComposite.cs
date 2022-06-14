@@ -44,10 +44,10 @@ namespace BeerHub.Models
       return CocktailsCollection.Where(x => x.CocktailName == name).FirstOrDefault();
     }
 
-    public Collection<Cocktails> GetAllCocktails()
+    /*public Collection<Cocktails> GetAllCocktails()
     {
       return CocktailsCollection;
-    }
+    }*/
     #endregion
 
     #region CTOR
