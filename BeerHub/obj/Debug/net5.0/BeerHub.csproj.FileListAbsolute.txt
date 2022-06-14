@@ -146,3 +146,4 @@ C:\Users\bbdnet2582\Documents\GitHub\BeerHub\BeerHub\bin\Debug\net5.0\runtimes\w
 C:\Users\bbdnet2582\Documents\GitHub\BeerHub\BeerHub\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\bbdnet2582\Documents\GitHub\BeerHub\BeerHub\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\bbdnet2582\Documents\GitHub\BeerHub\BeerHub\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\bbdnet2584\Desktop\GradStuff\BeerHub\BeerHub\obj\Debug\net5.0\BeerHub.csproj.AssemblyReference.cache

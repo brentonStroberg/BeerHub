@@ -61,6 +61,10 @@ namespace BeerHub
       {
         endpoints.MapControllers();
       });
+
+      // Use ErrorController to handle exceptions
+      app.UseExceptionHandler("/error");
+      app.UseStatusCodePagesWithRedirects("/StatusCode/{0}");
     }
   }
 }

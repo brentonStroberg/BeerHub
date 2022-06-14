@@ -39,6 +39,7 @@ namespace BeerHub.Models
 
     public List<Alcohols> GetAllAlcohols()
     {
+      //List<Alcohols> x = null;
       return amc.GetAllAlcohols();
     }
 
