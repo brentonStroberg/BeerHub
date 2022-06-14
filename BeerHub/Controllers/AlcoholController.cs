@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using BeerHub.Interfaces;
 using BeerHub.Models;
 using System.Collections.ObjectModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using BeerHub.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -79,10 +81,10 @@ namespace BeerHub.Controllers
     }
     #endregion
 
-    #region Post
-    [Route("Save/")]
-    [HttpPost]
-    public void Save()
+    [Route("GetAllAlcohols/")]
+    [HttpGet]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public Collection<Alcohol> GetAllAlcohols()
     {
       main.Save();
     }
