@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using BeerHub.Interfaces;
 using BeerHub.Models;
 using System.Collections.ObjectModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace BeerHub.Controllers
 {
@@ -49,7 +51,8 @@ namespace BeerHub.Controllers
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public Collection<Alcohol> GetAllAlcohols()
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public Collection<Alcohol> GetAllAlcohols()
     {
       return main.GetAllAlcohols();
     }
