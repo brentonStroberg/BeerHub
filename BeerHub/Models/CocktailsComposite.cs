@@ -1,5 +1,4 @@
-﻿using BeerHub.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -29,11 +28,6 @@ namespace BeerHub.Models
     #endregion
 
     #region Methods
-
-    public List<Cocktails> GetAllCocktails()
-    {
-      return cocktailsCollection.ToList();
-    }
     public void AddCocktails(Cocktails cocktails)
     {
       CocktailsCollection.Add(cocktails);
@@ -41,13 +35,13 @@ namespace BeerHub.Models
 
     public Cocktails GetCocktails(string name)
     {
-      return CocktailsCollection.Where(x => x.CocktailName == name).FirstOrDefault();
+      return CocktailsCollection.Where(x => x.Name == name).FirstOrDefault();
     }
 
-    /*public Collection<Cocktails> GetAllCocktails()
+    public Collection<Cocktails> GetAllCocktails()
     {
       return CocktailsCollection;
-    }*/
+    }
     #endregion
 
     #region CTOR
@@ -61,7 +55,6 @@ namespace BeerHub.Models
     {
       CocktailsCollection = new Collection<Cocktails>();
     }
-
     #endregion
   }
 }
