@@ -19,14 +19,9 @@ namespace BeerHub.Controllers
   public class AlcoholController : ControllerBase
   {
 
-    public static DBManager _db;
-
-    public AlcoholController(DBManager db)
-    {
-      _db = db;
-    }
-
     static Main main = new Main();
+
+
 
     #region Gets
     [Route("GetAlcohol/{name}")]
@@ -60,7 +55,7 @@ namespace BeerHub.Controllers
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public List<Alcohol> GetAllAlcohols()
+    public List<Alcohols> GetAllAlcohols()
     {
       return main.GetAllAlcohols();
 
