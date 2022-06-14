@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using BeerHub.Interfaces;
 using BeerHub.Models;
 using System.Collections.ObjectModel;
-using BeerHub.Database;
 
 namespace BeerHub.Controllers
 {
@@ -17,20 +16,12 @@ namespace BeerHub.Controllers
   [Route("api")]
   public class AlcoholController : ControllerBase
   {
-
-    private readonly DBManager _db;
-
-    public AlcoholController(DBManager db)
-    {
-      _db = db;
-    }
-
     static Main main = new Main();
 
     #region Gets
     [Route("GetAlcohol/{name}")]
     [HttpGet]
-    public Alcohols GetAlcohol(string name)
+    public Alcohol GetAlcohol(string name)
     {
       return main.GetAlcohol(name);
     }
@@ -51,17 +42,9 @@ namespace BeerHub.Controllers
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public Collection<Alcohols> GetAllAlcohols()
+    public List<List<Alcohol>> GetAllAlcohols()
     {
-      Console.WriteLine(_db.alcohol.Find(1).Type);
       return main.GetAllAlcohols();
-    }
-
-    [Route("GetCocktails/{name}")]
-    [HttpGet]
-    public Cocktails GetCocktails(string name)
-    {
-      return main.GetCocktails(name);
     }
 
 
