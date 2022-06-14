@@ -137,7 +137,7 @@ namespace BeerHub.Models
 
     public void RemoveAlcohols(string name)
     {
-      string queryString = "DELETE FROM Alcohol where Name == @tPatSName";
+      string queryString = "DELETE FROM Alcohol where Name = @tPatSName";
       string connectionString = "Data Source=beerhub.cefferesjfkl.us-east-1.rds.amazonaws.com;Initial Catalog=BeerHub;Persist Security Info=True;User ID=admin;Password=Raees123.";
 
       using (SqlConnection connection = new SqlConnection(connectionString))
