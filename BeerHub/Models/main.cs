@@ -21,7 +21,7 @@ namespace BeerHub.Models
     }
 
     #region Gets
-    public Alcohol GetAlcohol(string name)
+    public Alcohols GetAlcohol(string name)
     {
       return ac.GetAlcohol(name);
     }
@@ -41,7 +41,7 @@ namespace BeerHub.Models
       return ac.GetVotes(name);
     }
 
-    public Collection<Alcohol> GetAllAlcohols()
+    public Collection<Alcohols> GetAllAlcohols()
     {
       return ac.GetAllAlcohols();
     }
