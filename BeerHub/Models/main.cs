@@ -1,4 +1,6 @@
-﻿using BeerHub.Interfaces;
+﻿using BeerHub.Controllers;
+using BeerHub.Database;
+using BeerHub.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,9 +34,9 @@ namespace BeerHub.Models
       return amc.UpVote(name);
     }
 
-    public List<Alcohols> GetAllAlcohols()
+    public List<Alcohol> GetAllAlcohols()
     {
-      return amc.GetAllAlcohols();
+      return AlcoholController._db.alcohol.ToList();
     }
 
     public Cocktails GetCocktails(string name)
