@@ -31,11 +31,11 @@ namespace BeerHub.Controllers
       return StatusCode(200, main.GetAlcohol(name));
     }
 
-    [Route("Alcohol/{name}")]
+    [Route("Alcohol/")]
     [HttpPost]
-    public ActionResult AddAlcohol(Alcohols name)
+    public ActionResult AddAlcohol([FromBody] Alcohols alcohols)
     {
-      return StatusCode(201, main.AddAlcohol(name));
+      return StatusCode(201, main.AddAlcohol(alcohols));
     }
 
     [Route("GetVotes/{name}")]
@@ -82,6 +82,8 @@ namespace BeerHub.Controllers
     }
     #endregion
 
+    #region Post
+
     [Route("save/")]
     [HttpPost]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -89,7 +91,7 @@ namespace BeerHub.Controllers
     {
       main.Save();
     }
-
+    #endregion
     //[HttpGet]
     //public IEnumerable<Alcohol> GetAllAlcohols()
     //{
