@@ -75,14 +75,15 @@ namespace BeerHub.Controllers
     #region Delete
     [Route("Alcohol/{name}")]
     [HttpDelete]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public bool RemoveAlcohol(string name)
     {
       return main.RemoveAlcohol(name);
     }
     #endregion
 
-    [Route("GetAllAlcohols/")]
-    [HttpGet]
+    [Route("save/")]
+    [HttpPost]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public void Save()
     {
