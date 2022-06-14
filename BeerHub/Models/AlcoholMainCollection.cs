@@ -23,7 +23,7 @@ namespace BeerHub.Models
       }
     }
 
-    public bool AddAlcohol(Alcohol alcohol)
+    public bool AddAlcohol(Booze alcohol)
     {
       
       foreach(var atc in AlcoholTypeCollection)
@@ -51,6 +51,13 @@ namespace BeerHub.Models
 
     public bool DownVote(string name)
     {
+      foreach (var atc in AlcoholTypeCollection)
+      {
+        if (atc.FindName(name) == true)
+        {
+          return atc.DownVote(name);
+        }
+      }
       return false;
     }
 
@@ -63,12 +70,41 @@ namespace BeerHub.Models
           return atc.GetVotes(name);
         }
       }
+      return "";
+    }
+
+    public Booze GetAlcohol(string name)
+    {
+      foreach (var atc in AlcoholTypeCollection)
+      {
+        if (atc.FindName(name) == true)
+        {
+          return atc.GetAlcohol(name);
+        }
+      }
+      return null;
+    }
+
+    public bool RemoveAlcohol(string name)
+    {
+      foreach (var atc in AlcoholTypeCollection)
+      {
+        if (atc.FindName(name) == true)
+        {
+          return atc.RemoveAlcohol(name);
+        }
+      }
       return false;
     }
 
-    public List<List<Alcohol>> GetAllAlcohols()
+    public List<Booze> GetAllAlcohols()
     {
-      return null;
+      List<Booze> tmp = new List<Booze>();
+      foreach(var atc in AlcoholTypeCollection)
+      {
+        tmp.AddRange(atc.GetAllAlcohols());
+      }
+      return tmp;
     }
 
     public AlcoholMainCollection()

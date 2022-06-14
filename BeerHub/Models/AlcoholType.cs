@@ -64,7 +64,18 @@ namespace BeerHub.Models
       return false;
     }
 
-
+    public string GetVotes(string name)
+    {
+      foreach (var alc in Alcohols)
+      {
+        if (alc.Name == name)
+        {
+          
+          return "Upvote: " + alc.Upvote + ", Downvote: " + alc.Downvote;
+        }
+      }
+      return "Successful";
+    }
 
     public bool UpVote(string name)
     {
@@ -77,6 +88,49 @@ namespace BeerHub.Models
         }
       }
       return false;
+    }
+
+    public bool DownVote(string name)
+    {
+      foreach (var alc in Alcohols)
+      {
+        if (alc.Name == name)
+        {
+          alc.DownVote();
+          return true;
+        }
+      }
+      return false;
+    }
+
+    public Booze GetAlcohol(string name)
+    {
+      foreach (var alc in Alcohols)
+      {
+        if (alc.Name == name)
+        {
+          return alc;
+        }
+      }
+      return null;
+    }
+
+    public bool RemoveAlcohol(string name)
+    {
+      foreach (var alc in Alcohols)
+      {
+        if (alc.Name == name)
+        {
+          Alcohols.Remove(alc);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    public List<Booze> GetAllAlcohols()
+    {
+      return Alcohols.ToList();
     }
     #endregion
 

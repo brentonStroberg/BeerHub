@@ -21,14 +21,22 @@ namespace BeerHub.Controllers
     #region Gets
     [Route("GetAlcohol/{name}")]
     [HttpGet]
-    public Alcohol GetAlcohol(string name)
+    public Booze GetAlcohol(string name)
     {
       return main.GetAlcohol(name);
     }
 
+
+    [Route("RemoveAlcohol/{name}")]
+    [HttpDelete]
+    public bool RemoveAlcohol(string name)
+    {
+      return main.RemoveAlcohol(name);
+    }
+
     [Route("AddAlcohol/{name}")]
-    [HttpGet]
-    public bool AddAlcohol(string name)
+    [HttpPost]
+    public bool AddAlcohol(Booze name)
     {
       return main.AddAlcohol(name);
     }
@@ -42,7 +50,7 @@ namespace BeerHub.Controllers
 
     [Route("GetAllAlcohols/")]
     [HttpGet]
-    public List<List<Alcohol>> GetAllAlcohols()
+    public List<Booze> GetAllAlcohols()
     {
       return main.GetAllAlcohols();
     }

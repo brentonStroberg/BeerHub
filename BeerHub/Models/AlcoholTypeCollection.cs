@@ -40,7 +40,7 @@ namespace BeerHub.Models
     #endregion
 
     #region Methods
-    public bool AddAlcohol(Alcohol alcohol)
+    public bool AddAlcohol(Booze alcohol)
     {
       foreach(var at in AlcoholTypes)
       {
@@ -53,13 +53,13 @@ namespace BeerHub.Models
       return true;
     }
 
-    public string GetVote(string name)
+    public string GetVotes(string name)
     {
       foreach (var at in AlcoholTypes)
       {
         if (at.FindName(name) == true)
         {
-          return at.GetVote(name);
+          return at.GetVotes(name);
         }
       }
       return "";
@@ -77,6 +77,30 @@ namespace BeerHub.Models
       return false;
     }
 
+    public bool DownVote(string name)
+    {
+      foreach (var at in AlcoholTypes)
+      {
+        if (at.FindName(name) == true)
+        {
+          return at.DownVote(name);
+        }
+      }
+      return false;
+    }
+
+    public bool RemoveAlcohol(string name)
+    {
+      foreach (var at in AlcoholTypes)
+      {
+        if (at.FindName(name) == true)
+        {
+          return at.RemoveAlcohol(name);
+        }
+      }
+      return false;
+    }
+
     public bool FindName(string name)
     {
       foreach(var at in AlcoholTypes)
@@ -88,10 +112,32 @@ namespace BeerHub.Models
       }
       return false;
     }
+
+    public Booze GetAlcohol(string name)
+    {
+      foreach (var at in AlcoholTypes)
+      {
+        if (at.FindName(name) == true)
+        {
+          return at.GetAlcohol(name);
+        }
+      }
+      return null;
+    }
+
+    public List<Booze> GetAllAlcohols()
+    {
+      List<Booze> tmp = new List<Booze>();
+      foreach(var at in AlcoholTypes)
+      {
+        tmp.AddRange(at.GetAllAlcohols());
+      }
+      return tmp;
+    }
     #endregion
 
     #region CTOR
-    public AlcoholTypeCollection(Alcohol alcohol)
+    public AlcoholTypeCollection(Booze alcohol)
     {
       Type = alcohol.Type;
       AlcoholTypes = new Collection<AlcoholType>();
