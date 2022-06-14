@@ -29,6 +29,11 @@ namespace BeerHub.Models
     #endregion
 
     #region Methods
+
+    public List<Cocktails> GetAllCocktails()
+    {
+      return cocktailsCollection.ToList();
+    }
     public void AddCocktails(Cocktails cocktails)
     {
       CocktailsCollection.Add(cocktails);
