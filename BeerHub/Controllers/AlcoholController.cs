@@ -58,14 +58,14 @@ namespace BeerHub.Controllers
 
     #region Puts
     [Route("Upvote/{name}")]
-    [HttpGet]
+    [HttpPatch]
     public bool UpVote(string name)
     {
       return main.UpVote(name);
     }
 
     [Route("Downvote/{name}")]
-    [HttpGet]
+    [HttpPatch]
     public bool Downvote(string name)
     {
       return main.Downvote(name);
