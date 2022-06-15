@@ -14,7 +14,7 @@ namespace BeerHub.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Hello World");
+            return Ok("My money don't jiggle jiggle, it folds.");
         }
     }
 }

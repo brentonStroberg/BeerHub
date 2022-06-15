@@ -29,7 +29,7 @@ namespace BeerHub.Models
     {
       while (true)
       {
-        await Task.Delay(TimeSpan.FromMinutes(2));
+        await Task.Delay(TimeSpan.FromMinutes(10));
         Save();
       }
     }
